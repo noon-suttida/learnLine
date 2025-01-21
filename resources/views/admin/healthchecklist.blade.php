@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Gallery - Medical Admin Templates & Dashboards</title>
+    <title>Smart Health Monitor</title>
     <base href="{{ \URL::to('/') }}">
 
     <!-- Meta -->
@@ -40,6 +40,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bebas+Neue&family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    
+    
+    <script src="https://cdn.canvasjs.com/ga/canvasjs.min.js"></script>
+    <script src="https://cdn.canvasjs.com/ga/canvasjs.stock.min.js"></script>
 
     <style>
       body {
@@ -57,6 +61,14 @@
         font-style: normal;
         font-size: 19px;
       }
+      #chartContainer {
+          width: 100%; /* ปรับให้เต็มพื้นที่หน้าจอ */
+          height: 400px; /* กำหนดความสูงตามต้องการ */
+          max-width: 800px; /* จำกัดความกว้างสูงสุด */
+          margin: auto; /* จัดกึ่งกลาง */
+      }
+
+
     </style>
 
   </head>
@@ -1164,17 +1176,21 @@
                                       <h5 class="card-title">ความดันโลหิต <label class="text-success">+HR</label></h5>
                                     </div>
                                     <div class="card-body">
-                                    <div id="candleStick"></div>
+                                    <!-- <div id="candleStick"></div> --> 
+                                      <div id="chartContainer"></div>
                                     </div>
                                   </div>
                                 </div>
-                                <div class="col-xl-6">
+                                <div class="col-xl-6" height="20%">
                                   <div class="card mb-3">
                                     <div class="card-header">
                                       <h5 class="card-title text-success">อัตราการเต้นหัวใจ</h5>
                                     </div>
                                     <div class="card-body">
-                                      <div id="negativeValues" class="chart-height-lg"></div>
+                                    <div id="income"></div> 
+                                    <div id="legend" style="text-align: center; margin-top: 10px;">
+                                      <span style="display: inline-block; width: 10px; height: 10px; background-color: #6bc06e; margin-right: 5px;"></span> อัตราการเต้นหัวใจ
+                                    </div>
                                     </div>
                                   </div>
                                 </div>
@@ -1190,6 +1206,7 @@
                                       <h5 class="card-title">อ็อกซิเจนในเลือด (SpO2) </h5>
                                     </div>
                                     <div class="card-body">
+                                    <div id="income2"></div> 
                                     </div>
                                   </div>
                                 </div>
@@ -1199,6 +1216,7 @@
                                       <h5 class="card-title">อุณหภูมิร่างกาย</h5>
                                     </div>
                                     <div class="card-body">
+                                    <div id="income3"></div>
                                     </div>
                                   </div>
                                 </div>
@@ -1219,6 +1237,10 @@
                         </div>
                       </div>
                     </div>
+
+
+                    
+
 
                     <!-- Modal Delete Row -->
                     <div class="modal fade" id="delRow" tabindex="-1" aria-labelledby="delRowLabel" aria-hidden="true">
@@ -1293,6 +1315,7 @@
     <script src="assets/vendor/apex/apexcharts.min.js"></script>
     <script src="assets/vendor/apex/custom/patients/sparklines.js"></script>
     <script src="assets/vendor/apex/custom/graphs/candlestick.js"></script>
+    <script src="assets/vendor/apex/custom/dashboard2/income.js"></script>
 
     
     
@@ -1306,7 +1329,7 @@
     <script src="assets/vendor/daterange/daterange.js"></script>
     <script src="assets/vendor/daterange/custom-daterange.js"></script>
 
-    
+
     <!-- Custom JS files -->
     <script src="assets/js/custom.js"></script>
   </body>
